@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+**book/issu_form.html**
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ form.book_name|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.borrower|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.created_date|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.expired_date|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.return_date|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.fine|as_crispy_field }}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save Issue</button>
+  </form>
+{% endblock %}

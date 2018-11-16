@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--     <p>
+    <a href="{% url 'book_add' %}" class="btn btn-primary">Add book</a>
+  </p> -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>pub_date</th>
+        <th>number_copies</th>
+        <th>code_number</th>
+        <th>price</th>
+        <th>add_date</th>
+        <th>author</th>
+        <th>category</th>
+        <th>publication</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for all_book in book %}
+        <tr>
+          <td><a href="{% url 'book_edit' all_book.pk %}">{{ all_book.name }}</a></td>
+          <td>{{ all_book.pub_date }}</td>
+          <td>{{ all_book.number_copies }}</td>
+          <td>{{ all_book.code_number }}</td>
+          <td>{{ all_book.price }}</td>
+          <td>{{ all_book.add_date }}</td>
+          <td>{{ all_book.author }}</td>
+          <td>{{ all_book.category }}</td>
+          <td>{{ all_book.publication }}</td>
+        </tr>
+      {% empty %}
+        <tr class="table-active">
+          <td colspan="3">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

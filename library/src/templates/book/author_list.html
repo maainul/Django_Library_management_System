@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  </p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for author in book %}
+        <tr>
+          <td><a href="{% url 'author_edit' author.pk %}">{{ author.name }}</a></td>
+          <td>{{ author.email }}</td>
+          <td>{{ author.phone }}</td>
+        </tr>
+      {% empty %}
+        <tr class="table-active">
+          <td colspan="3">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

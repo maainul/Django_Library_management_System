@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for borrower in book %}
+        <tr>
+          <td><a href="{% url 'borrower_edit' borrower.pk %}">{{ borrower.name }}</a></td>
+          <td>{{ borrower.gender }}</td>
+          
+          <td>{{ borrower.address }}</td>
+          <td>{{ borrower.email }}</td>
+          <td>{{ borrower.phone }}</td>
+        </tr>
+      {% empty %}
+        <tr class="table-active">
+          <td colspan="3">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

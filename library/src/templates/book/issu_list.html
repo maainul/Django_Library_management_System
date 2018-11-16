@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>book_name</th>
+        <th>borrower</th>
+        <th>created_date</th>
+        <th>expired_date</th>
+        <th>return_date</th>
+        <th>fine</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for issu in book %}
+        <tr>
+          
+          <td><a href="{% url 'issu_edit' issu.pk %}">{{ issu.book_name }}</a></td>
+          <td>{{ issu.borrower }}</td>
+          <td>{{ issu.created_date }}</td>
+          <td>{{ issu.expired_date }}</td>
+          <td>{{ issu.return_date }}</td>
+          <td>{{ issu.fine }}</td>
+
+        </tr>
+      {% empty %}
+        <tr class="table-active">
+          <td colspan="3">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

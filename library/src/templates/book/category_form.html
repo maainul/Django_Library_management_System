@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+**book/category_form.html**
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-12">
+        {{ form.name|as_crispy_field }}
+      </div>
+      <div class="col-12">
+        {{ form.description|as_crispy_field }}
+
+    </div>
+   
+    <button type="submit" class="btn btn-success">Save Category</button>
+  </form>
+{% endblock %}

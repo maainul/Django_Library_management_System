@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for publication in book %}
+        <tr>
+          <td><a href="{% url 'publication_edit' publication.pk %}">{{ publication.name }}</a></td>
+          <td>{{ publication.address }}</td>
+          <td>{{ publication.email }}</td>
+          <td>{{ publication.phone }}</td>
+        </tr>
+      {% empty %}
+        <tr class="table-active">
+          <td colspan="3">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
